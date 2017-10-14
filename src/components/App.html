@@ -1,0 +1,154 @@
+<div class="container">
+  <nav>
+    <h1>Cyandev</h1>
+    <ul>
+      <li><a href="/">About</a></li>
+      <li><a href="/posts">Posts</a></li>
+    </ul>
+  </nav>
+  <hr class="nav-separator">
+  <div class="main">
+    <slot></slot>
+  </div>
+  <footer>
+    <hr>
+    Copyright © 2017 Cyandev. All rights reserved.
+  </footer>
+</div>
+
+{{#if loading}}
+<div class="loading-hint">
+  Loading...
+</div>
+{{/if}}
+
+<style>
+  nav h1 {
+    display: inline;
+    font-size: 1em;
+  }
+
+  nav ul {
+    display: inline-block;
+    margin: 0 0 0 4em;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media(max-width: 425px) {
+    nav ul {
+      margin: 0 0 0 1em;
+    }
+  }
+
+  nav ul li {
+    display: inline;
+    margin: 0 0.5em;
+  }
+
+  .nav-separator {
+    margin: 2em 0;
+    border: none;
+    border-top: 1px solid #999;
+  }
+
+  .main {
+    padding-top: 2em;
+  }
+
+  .main h1::before,
+  .main h2::before,
+  .main h3::before,
+  .main h4::before,
+  .main h5::before {
+    content: '#';
+    margin-right: 1em;
+    opacity: 0.4;
+  }
+
+  .main h2::before {
+    content: '##';
+  }
+
+  .main h3::before {
+    content: '###';
+  }
+
+  .main h1 {
+    font-size: 1.7em;
+  }
+
+  .main h2 {
+    font-size: 1.3em;
+    margin-top: 2.2em;
+  }
+
+  .main h3 {
+    font-size: 1.1em;
+    margin-top: 2.0em;
+  }
+
+  .main h4, .main h5 {
+    font-size: 1em;
+    margin-top: 1.0em;
+  }
+
+  .main p, .main li {
+    color: #545454;
+    font-size: 0.89em;
+    font-weight: lighter;
+    line-height: 1.6em;
+    letter-spacing: 0.02em;
+  }
+
+  .main strong {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .main code {
+    background-color: #fdfdfd;
+    border-bottom: 1px solid #f0f0f0;
+    color: #000;
+  }
+
+  .main pre {
+    padding: 1em 3em;
+    background-color: #fdfdfd;
+    border: 1px solid #f0f0f0;
+    border-radius: 3px;
+    overflow: auto;
+  }
+
+  .main pre code {
+    border: none;
+  }
+
+  .main blockquote {
+    margin: 0;
+    padding: 1em 3em;
+    background-color: #fdfdfd;
+    border-left: 0.5em solid #f0f0f0;
+  }
+
+  .loading-hint {
+    position: absolute;
+    padding: 0.3em 0.7em;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    color: #fff;
+  }
+
+  footer {
+    margin-top: 3em;
+    font-size: 0.5em;
+    opacity: 0.5;
+  }
+
+  footer hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin-bottom: 2em;
+  }
+</style>

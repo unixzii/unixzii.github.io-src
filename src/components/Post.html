@@ -1,0 +1,48 @@
+<App loading={{loading}}>
+  {{#if err}}
+    <h1>Error!</h1>
+    <pre class="error-info"><code>{{err}}</code></pre>
+    <br>
+    <a href="{{href}}" on:click="retry()">Retry</a>
+  {{else}}
+    <h1>{{post.title}}</h1>
+    <div>{{{marked(content)}}}</div>
+    <br>
+    <p><strong>- EOF -</strong></p>
+    <p><strong>Last modified: {{post.publishedAt}}</strong></p>
+  {{/if}}
+</App>
+
+<style>
+  .error-info {
+    background-color: #fff0f0!important;
+    border: 1px solid #fed7d7!important;
+  }
+
+  .error-info code {
+    background-color: unset!important;
+    color: red!important;
+  }
+</style>
+
+<script>
+  import marked from 'marked';
+
+  import App from './App.html';
+
+  export default {
+    data() {
+      return {
+        href: window.location.href
+      };
+    },
+    helpers: { marked },
+    components: { App },
+    methods: {
+      retry() {
+        // Bypass the roadtrip router to fully reload the page.
+        window.location.reload(true);
+      }
+    }
+  };
+</script>

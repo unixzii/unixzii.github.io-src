@@ -1,0 +1,28 @@
+<App loading={{loading}}>
+  <h1>Posts</h1>
+  <ul>
+    {{#each filterPosts(posts) as post}}
+      <li><a href="/post/{{post.key}}">{{post.title}}</a></li>
+    {{/each}}
+  </ul>
+</App>
+
+<script>
+  import * as store from '../services/store';
+
+  import App from './App.html';
+
+  export default {
+    data() {
+      return {
+        posts: store.getPosts()
+      };
+    },
+    helpers: {
+      filterPosts(posts) {
+        return posts.filter(post => !post.hidden);
+      }
+    },
+    components: { App }
+  };
+</script>
